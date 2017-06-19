@@ -13,20 +13,24 @@ regex=re.compile('[%s]' % re.escape('[\s+\.\!\/_,$%^*(+\"\']+|[+——！，-。
 a=1
 
 for i in range(len(result2)):
-    result = []
-    if not result2[i]:
+    try:
+        result = []
+        if not result2[i]:
+            continue
+        str2="".join(result2[i])
+        print(str2)
+        m=regex.sub('',str2)
+        print(m)
+        seg_list = jieba.cut(m)
+        for w in seg_list :
+            result.append(w)
+        for x in result:
+            file.write(x)
+            file.write(' ')
+        print('the '+str(a) +' row\n')
+        a=a+1
+    except:
+        print ('error')
         continue
-    str2="".join(result2[i])
-    print(str2)
-    m=regex.sub('',str2)
-    print(m)
-    seg_list = jieba.cut(m)
-    for w in seg_list :
-        result.append(w)
-    for x in result:
-        file.write(x)
-        file.write(' ')
-    print('the '+str(a) +' row\n')
-    a=a+1
 file.close()
 
