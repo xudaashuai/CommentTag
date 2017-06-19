@@ -1,4 +1,3 @@
-# coding=utf-8
 import psycopg2,random
 import jieba
 import string
@@ -7,14 +6,15 @@ import re
 conn = psycopg2.connect("dbname=postgres user=postgres port=5439 password=123456")
 cur=conn.cursor()
 cur.execute("select commentbody from comment")
-result=cur.fetchall()
-file=open('/home/hygwork/result2.txt','w',encoding='UTF-8')
+result2=cur.fetchall()
+file=open('result.txt','w',encoding='UTF-8')
 Rs2=[]
 regex=re.compile('[%s]' % re.escape('[\s+\.\!\/_,$%^*(+\"\']+|[+——！，-。╮╯◇？、·【〜～~@#￥%……&*（）]+'))
 a=1
-for i in range(len(result)):
+for i in range(len(result2)):
     result=[]
-    str2=result[i]
+    str2="".join(result2[i])
+    print(str2)
     m=regex.sub('',str2)
     print(m)
     seg_list = jieba.cut(m)
@@ -26,5 +26,4 @@ for i in range(len(result)):
     print('the '+str(a) +' row\n')
     a=a+1
 file.close()
-
 
