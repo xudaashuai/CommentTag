@@ -11,14 +11,13 @@ file=open('result.txt','w',encoding='UTF-8')
 Rs2=[]
 regex=re.compile('[%s]' % re.escape('[\s+\.\!\/_,$%^*(+\"\']+|[+——！，-。╮╯◇？、·【〜～~@#￥%……&*（）]+'))
 a=1
-
 for i in range(len(result2)):
     try:
-        result = []
+        result= []
         if not result2[i]:
             continue
         str2="".join(result2[i])
-        print(str2)
+        #print(str2)
         m=regex.sub('',str2)
         print(m)
         seg_list = jieba.cut(m)
