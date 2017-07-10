@@ -2,7 +2,7 @@ import psycopg2
 import jieba
 import re
 
-conn = psycopg2.connect("dbname=postgres user=postgres port=5439 password=123456")
+conn = psycopg2.connect("dbname=postgres user=postgres port=5432 password=123456")
 cur=conn.cursor()
 cur.execute("SELECT text FROM meituan_comments")
 result2=cur.fetchall()
