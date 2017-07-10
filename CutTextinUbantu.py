@@ -1,11 +1,10 @@
-import psycopg2,random
+import psycopg2
 import jieba
-import string
 import re
 
 conn = psycopg2.connect("dbname=postgres user=postgres port=5439 password=123456")
 cur=conn.cursor()
-cur.execute("select text from meituan_comments")
+cur.execute("SELECT text FROM meituan_comments")
 result2=cur.fetchall()
 file=open('result.txt','w',encoding='UTF-8')
 Rs2=[]
@@ -17,7 +16,6 @@ for i in range(len(result2)):
         if not result2[i]:
             continue
         str2="".join(result2[i])
-        print(str2)
         m=regex.sub('',str2)
         print(m)
         seg_list = jieba.cut(m)
