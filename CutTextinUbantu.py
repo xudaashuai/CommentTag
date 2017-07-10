@@ -5,7 +5,7 @@ import re
 
 conn = psycopg2.connect("dbname=postgres user=postgres port=5439 password=123456")
 cur=conn.cursor()
-cur.execute("select commentbody from comment")
+cur.execute("select text from meituan_comments")
 result2=cur.fetchall()
 file=open('result.txt','w',encoding='UTF-8')
 Rs2=[]
