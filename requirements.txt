@@ -1,2 +1,2 @@
 baidu-aip==1.4.0.0
-requests==2.12.4.decode('utf-8').encode('GBK')
+requests==2.12.4
